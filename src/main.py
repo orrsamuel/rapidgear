@@ -16,6 +16,13 @@ velocity = 5  # How many pixels the car will move per frame
 # Initialize clock for controlling FPS
 clock = pygame.time.Clock()
 
+# Load the car image
+car_image = pygame.image.load('assets/car.png')
+car_image = pygame.transform.scale(car_image, (100, 120))
+
+map_image = pygame.image.load('assets/map.jpeg')
+
+
 # Main game loop
 running = True
 while running:
@@ -38,8 +45,9 @@ while running:
         y += velocity
 
     # Drawing
-    screen.fill((0, 0, 0))  # Fill the screen with black
-    pygame.draw.rect(screen, (0, 128, 255), (x, y, width, height))  # Draw the car (rectangle)
+    screen.blit(map_image, (0, 0))
+    screen.blit(car_image, (x, y)) # Draw car sprite
+    
     pygame.display.update()  # Update the screen
 
 # Quit Pygame
